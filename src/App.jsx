@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, BrowserRouter} from 'react-router-dom';
 import Layout from './components/Layout';
 import Products from "./pages/Products";
 import Cart from './pages/Cart'
@@ -10,7 +10,7 @@ import Home from './pages/Home';
 
 export default function App() {
   return (
-    <Router>
+    <BrowserRouter basename="/my-responsive-app-eccomerce/">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="home" />} /> {/* Redirige '/' a '/home' */}
@@ -21,6 +21,6 @@ export default function App() {
           <Route path="cart" element={<Cart />} /> 
         </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }

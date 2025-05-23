@@ -14,7 +14,7 @@ import { useState } from 'react';
             <div className="max-w-7xl mx-auto flex justify-between items-center p-1">
                 <Link to="/" className="block h-16 w-auto">
                     <img 
-                        src="/images/logocaja.png"
+                        src={`${import.meta.env.BASE_URL}images/logocaja.png`}
                         alt="Logo"
                         className='h-full w-auto object-contain'
                     />
