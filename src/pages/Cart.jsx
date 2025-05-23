@@ -1,0 +1,104 @@
+import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+
+export default function Cart() {
+  const { cartItems, addToCart, decreaseQuantity, removeFromCart } = useCart();
+  const navigate = useNavigate();
+
+  const total = cartItems.reduce(
+    (acc, product) => acc + product.price * product.quantity,
+    0
+  );
+
+  const isEmpty = cartItems.length === 0;
+
+  return (
+    <div className="flex justify-center py-8 px-4">
+      <div className="w-full max-w-3xl bg-gray-100 rounded-xl shadow-lg p-6 text-center">
+
+        {/* Título dinámico */}
+        <h1 className="text-3xl font-bold mb-4">
+          {isEmpty ? "El carrito está vacío" : "Carrito de Compras"}
+        </h1>
+
+        {/* Contenido si está vacío */}
+        {isEmpty ? (
+          <>
+            <p className="text-gray-600 text-base mb-6">
+              Una vez que añadas algo a tu carrito, aparecerá acá. ¿Listo para empezar?
+            </p>
+              <button
+                type="button"
+                onClick={() => navigate("/products")}
+                className="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-blue-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group"
+              >
+                Ver productos
+                <svg
+                  className="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                  viewBox="0 0 16 19"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                    className="fill-gray-800 group-hover:fill-gray-800"
+                  />
+                </svg>
+              </button>
+          </>
+        ) : (
+          <div className="space-y-6 text-left">
+            {cartItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm hover:shadow-md hover:scale-[1.01] transition duration-300"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-20 h-20 object-contain"
+                />
+
+                <div className="flex-1">
+                  <h2 className="font-semibold text-lg">{item.title}</h2>
+                  <p className="text-gray-600">Precio: ${item.price}</p>
+                  <p className="text-gray-600">Cantidad: {item.quantity}</p>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="bg-green-500 text-white px-2 py-1 rounded text-sm hover:bg-green-600 transition duration-200"
+                  >
+                    + Unidad
+                  </button>
+                  <button
+                    onClick={() => decreaseQuantity(item.id)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded text-sm hover:bg-yellow-600 transition duration-200"
+                  >
+                    - Unidad
+                  </button>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600 transition duration-200"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            <div className="text-right mt-6">
+              <p className="text-xl font-bold mb-2">Total: ${total.toFixed(2)}</p>
+              <button
+                onClick={() => alert("Compra finalizada")}
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+              >
+                Finalizar compra
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
