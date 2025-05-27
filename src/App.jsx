@@ -5,6 +5,9 @@ import Products from "./pages/Products";
 import Cart from './pages/Cart'
 import './App.css';
 import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import MyOrders from './pages/MyOrders';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 
@@ -17,7 +20,14 @@ export default function App() {
           <Route path="home" element={<Home />} /> 
           <Route path="products" element={<Products />} />
           <Route path="contact" element={<div>Contact Content</div>} />
-          <Route path="sign-in" element={<div>Sign In Content</div>} />
+          <Route path="my-orders" 
+                  element={
+                    <ProtectedRoute>
+                      <MyOrders />
+                    </ProtectedRoute>
+                    }
+          />
+          <Route path="sign-in" element={<SignIn />} />
           <Route path="cart" element={<Cart />} /> 
         </Route>
       </Routes>

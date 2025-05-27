@@ -1,12 +1,24 @@
-# React + Vite
+## Tecnologías usadas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- React
+- Vite
+- TailwindCSS
 
-Currently, two official plugins are available:
+## Despliegue
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Está desplegado en GitHub Pages en: https://lorenzozampedri.github.io/my-responsive-app-eccomerce/
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+23-05
+modifique rutas para poder usar git pages. 
+falta agregar quienes somos y un login
+quienes somos en componentes completos con animacion aos
+login sin verificacion y creando rutas privadas
+
+26-05
+agregue archivo 404.html ya que renderizo todo en /home, sino el deploy se rompia al recargar la pagina
+agregue login y pedidos con rutas privadas y local storage
+falta quienes somos
+faltan animaciones 
+faltan pop up de animacion cuando agrego elimino y cierro compra //opcional
+

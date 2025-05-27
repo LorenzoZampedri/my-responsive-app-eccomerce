@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext"; // nuevo
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <AuthProvider> {/*Nuevo wrapper para auth */}
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
