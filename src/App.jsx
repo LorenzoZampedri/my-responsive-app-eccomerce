@@ -7,6 +7,7 @@ import './App.css';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import MyOrders from './pages/MyOrders';
+import Contact from './pages/Contact';
 import ProtectedRoute from './components/ProtectedRoute';
 
 
@@ -19,7 +20,7 @@ export default function App() {
           <Route index element={<Navigate to="home" />} /> {/* Redirige '/' a '/home' */}
           <Route path="home" element={<Home />} /> 
           <Route path="products" element={<Products />} />
-          <Route path="contact" element={<div>Contact Content</div>} />
+          <Route path="contact" element={<Contact/>} />
           <Route path="my-orders" 
                   element={
                     <ProtectedRoute>

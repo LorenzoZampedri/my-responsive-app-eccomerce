@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
   );
 }
 
-// Para que el hook useAuth funcione, hay que exportarlo explícitamente:
+// Para que el hook useAuth funcione, exporto explícitamente:
 
 export function useAuth() {
   return useContext(AuthContext);

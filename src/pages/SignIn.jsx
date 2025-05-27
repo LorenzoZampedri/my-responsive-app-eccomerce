@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 export default function SignIn() {
   const { isAuthenticated, login } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('ejemplo@rushcart.com');
+  const [password, setPassword] = useState('12345678');
 
   useEffect(() => {
     if (isAuthenticated) {
